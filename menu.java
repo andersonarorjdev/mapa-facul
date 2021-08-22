@@ -114,8 +114,15 @@ public class menu {
                             crud.Update(produtoupdate);
                         }catch(Exception error) {
                              error.printStackTrace();
-                        }
-
+                        }   
+                        
+                        //caso foi alterado o nome do produto
+                        if(nomeProduto2.compareTo(produtoupdate.getName()) != 0) {
+                            map.remove(nomeProduto2); //remove o elemento antigo
+                            map.put(produtoupdate.getName(), produtoupdate.getId());     
+                        } 
+                        //else mantemos o estado do hashmap
+                        break;
                 }
 
                 break;
