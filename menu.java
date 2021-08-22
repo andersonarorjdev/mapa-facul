@@ -18,9 +18,21 @@ public class menu {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String options = reader.readLine();
+        int OpcaoPrincipal = Integer.parseInt(options); 
 
-        switch (options) {
-            case "1":
+      while(OpcaoPrincipal != 0){
+
+          if(OpcaoPrincipal == 0){
+             System.exit(0);
+          }
+
+          if(OpcaoPrincipal != 1 || OpcaoPrincipal != 2 || OpcaoPrincipal != 3 || OpcaoPrincipal != 4){
+              System.out.println("Opcao Invalida");
+              continue;
+          }
+
+        switch (OpcaoPrincipal) {
+            case 1:
              System.out.println("Cadastro de Produtos");
              System.out.println("1 - Inclusão");
              System.out.println("2 - Alteração");
@@ -114,7 +126,7 @@ public class menu {
              break;
             
 
-             case "2":
+             case 2:
                 System.out.println("Movimentacao");
                 System.out.println("1 - Entrada");
                 System.out.println("2 - Saída");
@@ -127,9 +139,6 @@ public class menu {
                             System.out.println("Digite o nome do produto á ser buscado");
                             String NomeProdutoSerBuscado = reader.readLine();
 
-                            //Vai imprimir quantas vezes esse produto foi inserido na estoque(entrada),
-                            //Vai imprimir a quantidade atual desse produto no estoque.
-                            //vai imprimir a quantidade final atual + entrada.
                             System.out.println("Quantidade de produtos atualmente: ");
                             System.out.println("Quantidade de produtos na entrada: ");
                             System.out.println("Quantidade total de produtos:");
@@ -138,27 +147,35 @@ public class menu {
 
                         case "2":
                             System.out.println("Digite o nome do produto á ser buscado");
-                            
+                            System.out.println("Quantidade de produtos atualmente: ");
+                            System.out.println("Quantidade de produtos na saida: ");
+                            System.out.println("Quantidade total de produtos:");
+                        break;
                     }
                 }
 
              break;
             
-
-             case "3":
-             System.out.println("Reajustes de Preços");
+             case 3:
+                System.out.println("Reajustes de Preços");
+                System.out.println("Digite o nome do produto que deseja alterar o preço");
+                String NomeProdutoAlterarPreco = reader.readLine();
+                Boolean ProdutoExiste = false;
+                if(ProdutoExiste){
+                    System.out.println("Produto encontrado");    
+                }
+                else{
+                    System.out.println("Produto nao encontrado");
+                }
              break;
             
 
-             case "4":
-             System.out.println("Relatorios");
-             break;
-             
-
-             case "0":
-             System.out.println("Finalizar");
+             case 4:
+                System.out.println("Relatorios");
+                //vai retornar os dados de todos os produtos.
              break;
         }
+      }
        
     }    
 }
