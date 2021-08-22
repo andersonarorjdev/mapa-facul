@@ -123,6 +123,34 @@ public class menu {
                         } 
                         //else mantemos o estado do hashmap
                         break;
+                    
+                    //consulta
+                    case "3":
+                        System.out.println("Sistema de Controle de Estoque");
+                        System.out.println("Consulta de Produtos");
+
+                        //digitar o nome do Produto
+                        //consultar a HashMap (elemento existe) se nao lancar error
+
+                        //retornar id
+
+                        //consultar o crud.read(id) -> retornar o Produto 
+                        
+                        //printar na tela acessando o metodo toString()
+                    break;
+                    
+                    case "4":
+                        //exclusao 
+                        //pedir ao usuario um nome do produto 
+                        //validar atraves da HashMap
+                        
+                        //recebe o id
+                        //crud.Delete(id)
+                    break;
+
+                    default:  //tratar o case 0 e outros numeros solicitados ao inves de ficar estourando erros na tela
+
+                    break;
                 }
 
                 break;
