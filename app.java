@@ -4,6 +4,6 @@ import java.io.InputStreamReader;
 
 public class app extends menu{
     public static void main(String[] args) throws IOException {
-        menu.imprimeMenu();
+        menu.main();
     }
 }

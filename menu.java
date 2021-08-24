@@ -3,8 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class menu {
-    
-    public static void imprimeMenu() throws IOException {
+
+    public static void ImprimePrincipal() throws IOException{
         System.out.println("Empresa de importação de produtos LTDA.");
         System.out.println("Sistema de controle de estoque");
         System.out.println("Menu Principal");
@@ -14,91 +14,123 @@ public class menu {
         System.out.println("3 - Reajustes de Preços");
         System.out.println("4 - Relatorios");
         System.out.println("0 - Finalizar");
+    }
 
+    public static void ImprimeMenuCadastrodeProdutos() throws IOException{
+        System.out.println("Cadastro de Produtos");
+        System.out.println("1 - Inclusão");
+        System.out.println("2 - Alteração");
+        System.out.println("3 - Consulta");
+        System.out.println("0 - Retornar");
+    }
+
+    public static void ImprimeMenuMovimentacao() throws IOException {
+        System.out.println("Movimentacao");
+        System.out.println("1 - Entrada");
+        System.out.println("2 - Saída");
+        System.out.println("0 - Retornar");
+
+    }
+
+    public static void main() throws IOException {
+       
+        //Instanciando BufferedReader 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        ImprimePrincipal();
         String options = reader.readLine();
         int OpcaoPrincipal = Integer.parseInt(options); 
 
       while(OpcaoPrincipal != 0){
-
           if(OpcaoPrincipal == 0){
              System.exit(0);
           }
 
-          if(OpcaoPrincipal != 1 || OpcaoPrincipal != 2 || OpcaoPrincipal != 3 || OpcaoPrincipal != 4){
-              System.out.println("Opcao Invalida");
-              continue;
-          }
-
         switch (OpcaoPrincipal) {
-            case 1:
-             System.out.println("Cadastro de Produtos");
-             System.out.println("1 - Inclusão");
-             System.out.println("2 - Alteração");
-             System.out.println("3 - Consulta");
-             System.out.println("0 - Retornar");
+            case 1:    
+                ImprimeMenuCadastrodeProdutos();
+                String opcaoMenu1 = reader.readLine();
  
-             String opcaoMenu1 = reader.readLine();
- 
-            switch (opcaoMenu1) {
+                switch (opcaoMenu1) {
 
-                 case "1":
-                     System.out.println("Sistema de Controle de Estoque");
-                     System.out.println("Inclusao de Produtos");
+                    case "1":
+                    //Cadastro de Produto
+                        String RepetirOperacaoInclusao = "S";
+                        while(RepetirOperacaoInclusao != "N"){
+                            System.out.println("Sistema de Controle de Estoque");
+                            System.out.println("Inclusao de Produtos");
+        
+                            System.out.println("Nome do Produto:");
+                            String nomeProduto = reader.readLine();
+        
+                            System.out.println("Preco Unitario:");
+                            String precoUnitario = reader.readLine();
+        
+                            System.out.println("Quantidade em Estoque:");
+                            String quantidadeEstoque = reader.readLine();
+        
+                            System.out.println("Confirma inclusao em estoque? S ou N");
+                            String confirmacao = reader.readLine();
+        
+                                if (confirmacao.equals("S")) {
+                                    System.out.println("Produto Incluido com sucesso");
+                                } else {
+                                    System.out.println("Produto não foi incluido");
+                                }
+        
+                                System.out.println("Deseja repetir a operação? S ou N");
+    
+                                String  repetir = reader.readLine();
+                                if (repetir.equals("S")) {
+                                    RepetirOperacaoInclusao = "S";
+                                }else{
+                                   RepetirOperacaoInclusao = "N";
+                                }
+                                ImprimePrincipal();
+                        }
+                    break;
  
-                     System.out.println("Nome do Produto:");
-                     String nomeProduto = reader.readLine();
- 
-                     System.out.println("Preco Unitario:");
-                     String precoUnitario = reader.readLine();
- 
-                     System.out.println("Quantidade em Estoque:");
-                     String quantidadeEstoque = reader.readLine();
- 
-                     System.out.println("Confirma inclusao em estoque? S ou N");
-                     String confirmacao = reader.readLine();
- 
-                         if (confirmacao.equals("S")) {
-                             System.out.println("Produto Incluido com sucesso");
-                         } else {
-                             System.out.println("Produto não foi incluido");
-                         }
- 
-                         System.out.println("Deseja repetir a operação? S ou N");
+                    case "2":
+                    //Alteracao de produto
+                        String RepetirOperacaoAlteracao = "S";
+                        while(RepetirOperacaoAlteracao != "N"){
+                            System.out.println("Sistema de Controle de Estoque");
+                            System.out.println("Alteracao de Produtos");
+        
+                            System.out.println("Nome do Produto:");
+                            String NomeProduto = reader.readLine();
+                            //Caso o produto nao exista, vai ser criado um novo produto, caso ele exista vai ser alterado, caso nao exista sera imprido que ele nao existe
+                            //Primeiro vai exibir os dados do produto, para poder atualizar.
 
-                         String  repetir = reader.readLine();
-                         if (repetir.equals("S")) {
-                             //Vai repetir a operacao
-                         }else{
-                             //vai voltar par o menu principal
-                         }
- 
-                 break;
- 
-                 case "2":
-                     System.out.println("Sistema de Controle de Estoque");
-                     System.out.println("Alteracao de Produtos");
- 
-                     System.out.println("Nome do Produto:");
-                     String NomeProduto = reader.readLine();
-                     //Caso o produto nao exista, vai ser criado um novo produto, caso ele exista vai ser alterado, caso nao exista sera imprido que ele nao existe
-                     //Primeiro vai exibir os dados do produto, para poder atualizar.
+                            System.out.println("Nome do Produto:");
+                            String nomeAtualizadoProduto = reader.readLine();
+        
+                            System.out.println("Preco Unitario:");
+                            String precoAtualizadoUnitario = reader.readLine();
+        
+                            System.out.println("Quantidade em Estoque:");
+                            String quantidadeAtualizadoEstoque = reader.readLine();
+        
+                            System.out.println("Confirma inclusao em estoque? S ou N");
+                            String confirmacaoAtualizacao = reader.readLine();
 
-                     System.out.println("Nome do Produto:");
-                     String nomeAtualizadoProduto = reader.readLine();
- 
-                     System.out.println("Preco Unitario:");
-                     String precoAtualizadoUnitario = reader.readLine();
- 
-                     System.out.println("Quantidade em Estoque:");
-                     String quantidadeAtualizadoEstoque = reader.readLine();
- 
-                     System.out.println("Confirma inclusao em estoque? S ou N");
-                     String confirmacaoAtualizacao = reader.readLine();
+                                if (confirmacaoAtualizacao.equals("S")) {
+                                    System.out.println("Produto Alterado com sucesso");
+                                } else {
+                                    System.out.println("Produto não foi alterado");
+                                }
 
+                                System.out.println("Deseja repetir a operação? S ou N");
 
-                break;
+                                String  repetir = reader.readLine();
+                                if (repetir.equals("S")) {
+                                    RepetirOperacaoAlteracao = "S";
+                                }else{
+                                    RepetirOperacaoAlteracao = "N";
+                                }
+                        }
+
+                    break;
                 
 
                 case "3":
@@ -127,11 +159,7 @@ public class menu {
             
 
              case 2:
-                System.out.println("Movimentacao");
-                System.out.println("1 - Entrada");
-                System.out.println("2 - Saída");
-                System.out.println("0 - Retornar");
-
+                ImprimeMenuMovimentacao();
                 String opcaoMenu2 = reader.readLine();
                 while(opcaoMenu2 != "0"){
                     switch (opcaoMenu2) {
@@ -174,7 +202,16 @@ public class menu {
                 System.out.println("Relatorios");
                 //vai retornar os dados de todos os produtos.
              break;
+
+             default:
+                System.out.println("Opção não encontrada");
+                System.out.println("Pof favor selecione uma opcao valida!");
+            break;
+
         }
+
+            options = reader.readLine();
+            OpcaoPrincipal = Integer.parseInt(options); 
       }
        
     }    
